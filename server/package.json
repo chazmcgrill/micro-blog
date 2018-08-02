@@ -1,0 +1,29 @@
+{
+  "name": "micro-blog-server",
+  "version": "1.0.0",
+  "description": "Fullstack Micro Blog App",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chazmcgrill/micro-blog.git"
+  },
+  "keywords": [
+    "micro-blog",
+    "fullstack",
+    "mern-stack",
+    "node",
+    "react"
+  ],
+  "author": "Charlie Taylor <mail@charlietaylorcoder.com> (https://charlietaylorcoder.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chazmcgrill/micro-blog/issues"
+  },
+  "homepage": "https://github.com/chazmcgrill/micro-blog#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
