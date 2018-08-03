@@ -2,8 +2,12 @@ const express = require('express');
 const db = require('./models');
 const app = express();
 
+app.set('view engine', 'ejs');
+
+app.use(express.static('public'));
+
 app.get('/', (req, res) => {
-  res.send('WORKING!');
+  res.render('index');
 });
 
 const port = process.env.PORT || 3000;
