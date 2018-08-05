@@ -14,10 +14,36 @@ app.get('/', (req, res) => {
 
 app.post('/newuser', (req, res) => {
   // check username / email for duplicates & validity
-  // get password hash
-  // add information to the database
-  // return success confirmation
-  res.json(req.body);
+  db.User.find({$or: [{username: req.body.username}, {email: req.body.email}]}, (err, user) => {
+    if (err) {
+      return res.json({error: "Error Creating New User"});
+
+    } else if (user[0]) {
+      if (user[0].username === req.body.username && user[0].email === req.body.email) {
+        res.json({ error: "Username and email already exist" })
+      } else if (user[0].username === req.body.username) {
+        res.json({error: "Username already exists"})
+      } else {
+        res.json({ error: "Email already exists" })
+      }
+      
+    } else {
+      const newUser = new db.User({
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password,
+      });
+      newUser.save((err, data) => {
+        if (err) return res.json({error: "Error saving, retry"});
+        res.json(data);
+      })
+      // get password hash
+      // add information to the database
+      // return success confirmation
+    }
+
+  });
+  // res.json(req.body);
 });
 
 const port = process.env.PORT || 3000;
